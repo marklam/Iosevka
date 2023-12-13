@@ -17,6 +17,11 @@ packages/font-otl/src/**/*.mjs
 # Private config files
 private.toml
 private-build-plans.toml
+private.mk
+params/private-parameters.toml
+
+# Ignore tmp directory
+tmp
 
 # pages-source ignores
 .next
