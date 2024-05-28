@@ -18,4 +18,4 @@ build-texture-feature = true
   [buildPlans.iosevka-custom.ligations]
   inherits = "fsharp"
   disables = ["ltgt-ne"]
-  enables = ["llgg", "brack-bar"]
+  enables = ["llgg", "brack-bar", "brace-bar"]
