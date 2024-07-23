@@ -2,9 +2,9 @@
 family = "Iosevka Custom"
 spacing = "normal"
 serifs = "sans"
-no-cv-ss = true
-export-glyph-names = false
-build-texture-feature = true
+noCvSs = true
+exportGlyphNames = false
+buildTextureFeature = true
 
   [buildPlans.iosevka-custom.variants]
   inherits = "ss04"
