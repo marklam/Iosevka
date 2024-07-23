@@ -2,7 +2,6 @@
 
 $$include '../meta/macros.ptl'
 
-import [TransformedGeometry ContourSetGeometry] from "@iosevka/geometry"
 import [Point] from "@iosevka/geometry/point"
 import [Box] from "@iosevka/geometry/box"
 import [Transform] from "@iosevka/geometry/transform"
@@ -25,9 +24,13 @@ glyph-block Symbol-Currency : begin
 			include : dispiro
 				widths.center sw
 				flat (Middle + radius * 0.87 * [Math.cos angle]) (SymbolMid + radius * 0.87 * [Math.sin angle])
-				curl (Middle + radius * [Math.sqrt 2] * [Math.cos angle]) (SymbolMid + radius * [Math.sqrt 2] * [Math.sin angle])
+				curl (Middle + radius * Math.SQRT2 * [Math.cos angle]) (SymbolMid + radius * Math.SQRT2 * [Math.sin angle])
 
-	do "Sterling"
+	define SterlingConfig : object
+		serifless     { 0 }
+		motionSerifed { 1 }
+
+	foreach { suffix { serifGrade } } [Object.entries SterlingConfig] : do
 		define xBarLeft : [mix SB RightSB 0.2] - Stroke * 0.1
 		define [BaseShape] : glyph-proc
 			local xBarLeft : [mix SB RightSB 0.2] - Stroke * 0.1
@@ -40,17 +43,21 @@ glyph-block Symbol-Currency : begin
 					curl xBarLeft [mix Stroke CAP 0.3]
 					g4   SB Stroke
 				HBar.b SB RightSB 0
+			if serifGrade : include : VSerif.ur RightSB 0 VJut
 
-		create-glyph 'currency/sterlingSign' 0xA3 : glyph-proc
+		create-glyph "currency/sterlingSign.\(suffix)" : glyph-proc
 			set-width Width
 			include : BaseShape
 			include : LetterBarOverlay.l xBarLeft (CAP * 0.5)
 
-		create-glyph 'currency/liraSymbolSign' 0x20A4 : glyph-proc
+		create-glyph "currency/liraSymbolSign.\(suffix)" : glyph-proc
 			set-width Width
 			include : BaseShape
 			include : LetterBarOverlay.l xBarLeft (CAP * 0.37)
 			include : LetterBarOverlay.l xBarLeft (CAP * 0.60 - OverlayStroke * 0.25)
+
+	select-variant 'currency/sterlingSign'   0xA3
+	select-variant 'currency/liraSymbolSign' 0x20A4 (follow -- 'currency/sterlingSign')
 
 glyph-block Symbol-Currency-Letter-Derived : begin
 	glyph-block-import CommonShapes
@@ -271,7 +278,7 @@ glyph-block Symbol-Letter : begin
 
 		include : intersection [MaskAbove 0] : dispiro [widths.rhs]
 			flat xStart CAP
-			curl [Math.max (xStart + 0.01) (xVertBar - hd.x)] CAP
+			curl [Math.max (xStart + TINY) (xVertBar - hd.x)] CAP
 			archv
 			flat xVertBar (CAP - hd.y)
 			curl xVertBar yBranch
@@ -336,6 +343,28 @@ glyph-block Symbol-Letter : begin
 				flat (Middle + [HSwToV HalfStroke]) 0 [widths.lhs : AdviceStroke 3]
 				curl (RightSB - O) [mix 0 CAP 0.375]
 
+	do "Tally Marks"
+		create-glyph 'tallyMarkOne' 0x1D377 : glyph-proc
+			local df : include : DivFrame : if (para.diversityII < 1) ([mix 1 para.diversityM 2] / 4) 1
+			include : df.markSet.capital
+			include : VBar.m df.middle 0 CAP df.mvs
+
+		create-glyph 'tallyMarkFive' 0x1D378 : glyph-proc
+			local df : include : DivFrame [mix 1 para.diversityM 2] 4
+			include : df.markSet.capital
+
+			local left  : df.leftSB  + [HSwToV : 0.5 * df.mvs]
+			local right : df.rightSB - [HSwToV : 0.5 * df.mvs]
+
+			include : VBar.m      left              0 CAP df.mvs
+			include : VBar.m [mix left right (1/3)] 0 CAP df.mvs
+			include : VBar.m [mix left right (2/3)] 0 CAP df.mvs
+			include : VBar.m           right        0 CAP df.mvs
+
+			include : dispiro
+				flat (left  - LongJut / 2 + OX) (CAP * (1/3)) [widths.center df.mvs]
+				curl (right + LongJut / 2 - OX) (CAP * (2/3))
+
 glyph-block Symbol-Cyrl-Thousands : begin
 	glyph-block-import CommonShapes
 	create-glyph 'cyrlThousandsSign' 0x482 : glyph-proc
@@ -346,6 +375,9 @@ glyph-block Symbol-Cyrl-Thousands : begin
 
 glyph-block Symbol-Letter-Phonetic : begin
 	glyph-block-import CommonShapes
+	glyph-block-import Mark-Above : BreveShape InvBreveShape
+	glyph-block-import Mark-Shared-Metrics : markExtend markHalfStroke
+
 	create-glyph 'modifierArchBreve' 0xAB5B : glyph-proc
 		include : MarkSet.e
 		local archHeight : XH * 0.45
@@ -361,3 +393,20 @@ glyph-block Symbol-Letter-Phonetic : begin
 			g4.down.start (SB + OX) XH [heading Downward]
 			arch.lhs (XH - archHeight)
 			g4.up.end (RightSB - OX) XH [heading Upward]
+
+	create-glyph 'cyrlInvLowKavykaWithKavyka' 0x2E46 : glyph-proc
+		include : MarkSet.e
+
+		include : BreveShape
+			xMiddle -- Middle
+			width   -- markExtend * 3.0
+			top     -- XH
+			bottom  -- XH - AccentHeight
+			hs      -- markHalfStroke
+
+		include : InvBreveShape
+			xMiddle -- Middle
+			width   -- markExtend * 3.0
+			top     -- AccentHeight
+			bottom  -- 0
+			hs      -- markHalfStroke

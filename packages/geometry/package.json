@@ -1,6 +1,6 @@
 {
   "name": "@iosevka/geometry",
-  "version": "30.1.1",
+  "version": "30.3.3",
   "private": true,
   "exports": {
     ".": "./src/index.mjs",
@@ -13,8 +13,8 @@
     "./spiro-control": "./src/spiro-control.mjs"
   },
   "dependencies": {
-    "@iosevka/util": "30.1.1",
+    "@iosevka/util": "30.3.3",
     "spiro": "^3.0.1",
-    "typo-geom": "^0.15.1"
+    "typo-geom": "^0.16.1"
   }
 }

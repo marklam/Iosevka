@@ -41,9 +41,9 @@ glyph-block Autobuild-Transformed-Shared : begin
 		local targetNameMap  {.}
 
 		local TraverseGrList : list
-			* AnyCvOrCherryPicking
 			* AnyLocalizedForm
 			* DotlessOrNot
+			* AnyCvOrCherryPicking
 
 		foreach [record : items-of records] : begin
 			local srcName record.1
@@ -201,8 +201,8 @@ glyph-block Autobuild-Transformed : begin
 			list 0x1DAB 'smcpL'
 			list 0x1DAC 'meng'
 			list 0x1DAD 'turnmLeg/reduced'
-			list 0x1DAE 'nLTail'
-			list 0x1DAF 'nHookBottom'
+			list 0x1DAE 'nHookLeft'
+			list 0x1DAF 'nRTail'
 			list 0x1DB0 'smcpN'
 			list 0x1DB1 'obar'
 			list 0x1DB2 'latn/phi'
@@ -236,6 +236,10 @@ glyph-block Autobuild-Transformed : begin
 			list 0xA703 'substBarNoRise'
 			list 0xA704 'supst'
 			list 0xA705 'supstBarNoRise'
+			list 0xA717 'dotvbar'
+			list 0xA718 'dotslash'
+			list 0xA719 'dothbar'
+			list 0xA71A 'turnedRevNegate'
 			list 0xA71B 'arrowUp.NWID'
 			list 0xA71C 'arrowDown.NWID'
 			list 0xA71D 'alveolarclick'

@@ -1,5 +1,102 @@
 ## Modifications since last major version
 
+### 30.3.3
+
+* Make TELEPHONE SIGN (`U+2121`) and FACSIMILE SIGN (`U+213B`) use small-capital forms instead of superscript.
+* Add Characters:
+  - FRACTION NUMERATOR ONE (`U+215F`) (#1539).
+  - BIG SOLIDUS (`U+29F8`) (#2414).
+  - BIG REVERSE SOLIDUS (`U+29F9`) (#2414).
+  - TALLY MARK ONE (`U+1D377`) (#1784).
+  - TALLY MARK FIVE (`U+1D378`) (#1784).
+  - PLAYING CARD BACK (`U+1F0A0`) ... PLAYING CARD KING OF SPADES (`U+1F0AE`) (#1835).
+  - PLAYING CARD ACE OF HEARTS (`U+1F0B1`) ... PLAYING CARD RED JOKER (`U+1F0BF`) (#1835).
+  - PLAYING CARD ACE OF DIAMONDS (`U+1F0C1`) ... PLAYING CARD BLACK JOKER (`U+1F0CF`) (#1835).
+  - PLAYING CARD ACE OF CLUBS (`U+1F0D1`) ... PLAYING CARD TRUMP-21 (`U+1F0F5`) (#1835).
+  - REGIONAL INDICATOR SYMBOL LETTER A (`U+1F1E6`) ... REGIONAL INDICATOR SYMBOL LETTER Z (`U+1F1FF`).
+
+
+### 30.3.2
+
+* Fix side bearings of `U+02CC` under Quasi-Proportional.
+* Improve glyph shape for `U+02ED`.
+* Add characters:
+  - LEFTWARDS ARROW-TAIL (`U+2919`) ... RIGHTWARDS DOUBLE ARROW-TAIL (`U+291C`).
+  - MODIFIER LETTER STRESS AND HIGH TONE (`U+A720`).
+  - MODIFIER LETTER STRESS AND LOW TONE (`U+A721`).
+  - BLACK HEART (`U+1F5A4`).
+  - LEFT HALF CIRCLE (`U+1F907`).
+  - WHITE HEART (`U+1F90D`).
+
+
+### 30.3.1
+
+* Add Capital Eszet (`VXAC`) variants with top-left corner.
+* Add square-dotted variant for brailles (#2388).
+* Fix leaning mark anchors for `U+0195`, `U+019E`, `U+01A6`, and `U+0220`.
+* Optimize glyph shape for `U+01A6`, `U+A68A`, and `U+A68B`.
+* Make Aile and Etoile use {`six`|`nine`}.`closed-contour` by default.
+* Make `ss20` use `seven`.`curly-serifless` by default.
+* Adjust balancing of r with corner hooks (#2394).
+* Fix side bearings of Latin-1 Macron (`U+00AF`) under Quasi-Proportional.
+* Make `U+050F`, `U+A68B`, `U+FB03`, and `U+FB04` slightly wider under Quasi-Proportional.
+
+
+### 30.3.0
+
+* Add separate variant selectors For Cyrillic Capital/Lower E (`VXAA`, `VXAB`).
+* Add variant selector for Capital Eszet (`ẞ`) (`VXAC`) (#1552).
+* Add variant selector for Capital Thorn (`Þ`) (`VXAD`).
+* Add `serifed-capped` variants for `capital-e` and `capital-f` (`cv05`, `cv06`) (#2026).
+* Add `unilateral-bottom-serifed` and `unilateral-bottom-inward-serifed` variants for Cyrillic Capital/Lower Ze (`cv69`, `cv70`).
+* Add characters:
+  - SYMBOL FOR SAMARITAN SOURCE (`U+214F`).
+  - CURLY LOOP (`U+27B0`).
+  - DOUBLE CURLY LOOP (`U+27BF`).
+  - LEFT THIRD INDUCTOR (`U+1CC0B`)  (Proposed for Unicode 16; L2/21-235).
+  - MIDDLE THIRD INDUCTOR (`U+1CC0C`)  (Proposed for Unicode 16; L2/21-235).
+  - RIGHT THIRD INDUCTOR (`U+1CC0D`)  (Proposed for Unicode 16; L2/21-235).
+  - LOGIC GATE OR (`U+1CC15`)  (Proposed for Unicode 16; L2/21-235).
+  - LOGIC GATE AND (`U+1CC16`)  (Proposed for Unicode 16; L2/21-235).
+
+
+### 30.2.0
+
+* Improve glyph shape of INVERTED LOW KAVYKA WITH KAVYKA ABOVE (`U+2E46`).
+* Fix `cv96` application to LOW KAVYKA WITH DOT (`U+2E48`).
+* Make MODIFIER LETTER DOT VERTICAL BAR (`U+A717`) ... MODIFIER LETTER DOT HORIZONTAL BAR (`U+A719`) follow variants of Diacritical Dot (`cv96`).
+* Fix metrics of Cyrillie EnGhe and Abkhasian Che under Aile/Etoile (#2366).
+* Make CYRILLIC CAPITAL LETTER SOFT DE (`U+A662`) ... CYRILLIC SMALL LETTER SOFT EM (`A667`) follow variants of Greek Capital Gamma (`cv56`).
+* Make Bulgarian Cyrillic Lower El follow variants of Greek Capital Lambda (`cv60`).
+* Allow Italic Serbian Cyrillic Lower Ghe to use Hooky Bottom and Z-Shaped variants of `i` (`cv34`).
+* Fix CV/SS application of localized form of superscript/subscript letters (#2368).
+* Fix IPPH/APPH localization for superscript/subscript Greek Lower Beta and Chi (`U+1D5D`, `U+1D61`, `U+1D66`, `U+1D6A`).
+* Improve glyph visual for `U+279D`, `U+27A2`, `U+27A3`, and `U+2B4D`.
+* Add characters:
+  - STAR OF DAVID (`U+2721`).
+  - HEAVY TRIANGLE-HEADED RIGHTWARDS ARROW (`U+279E`).
+  - LEFTWARDS HARPOON WITH BARB UP ABOVE LEFTWARDS HARPOON WITH BARB DOWN (`U+2962`) ... DOWNWARDS HARPOON WITH BARB LEFT BESIDE DOWNWARDS HARPOON WITH BARB RIGHT (`U+2965`).
+  - UPWARDS HARPOON WITH BARB LEFT BESIDE DOWNWARDS HARPOON WITH BARB RIGHT (`U+296E`).
+  - DOWNWARDS HARPOON WITH BARB LEFT BESIDE UPWARDS HARPOON WITH BARB RIGHT (`U+296F`).
+  - HELLSCHREIBER PAUSE SYMBOL (`U+2BFF`).
+
+
+### 30.1.2
+
+* Fix Te bar terminal for Cyrillic TeTse (`U+04B4`..`U+04B5`) and Tche (`U+A693`..`U+A694`) under sans italic/oblique when `T` (`cv19`) is serifed.
+* Make presence of non-Te serifs of Cyrillic TeTse automatic.
+* Add characters:
+  - COMBINING KAVYKA ABOVE RIGHT (`U+1DF6`).
+  - COMBINING KAVYKA ABOVE LEFT (`U+1DF7`).
+  - DOTTED OBELOS (`U+2E13`).
+  - DASH WITH LEFT UPTURN (`U+2E43`) ... DOTTED SOLIDUS (`U+2E4A`).
+  - COMBINING CYRILLIC VZMET (`U+A66F`).
+  - COMBINING CYRILLIC KAVYKA (`U+A67C`) ... CYRILLIC PAYEROK (`U+A67F`).
+  - MODIFIER LETTER DOT VERTICAL BAR (`U+A717`) ... MODIFIER LETTER DOT HORIZONTAL BAR (`U+A719`).
+  - CROSSED NEGATIVE SQUARED LATIN CAPITAL LETTER P (`U+1F18A`).
+* Fix mark placement of Sideways U with Diaeresis (`U+1D1E`) when a CV/SS is applied to it (#2353).
+
+
 ### 30.1.1
 
 * Fix broken Cyrillic Ef (#2343).
