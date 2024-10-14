@@ -154,7 +154,7 @@ glyph-block Letter-Latin-Lower-R : begin
 		include : dispiro
 			widths.lhs
 			g4   hx (XH - rHookY)
-			hookstart (XH - O)
+			hookstart XH
 			flat (xBar - [HSwToV Stroke]) (XH - SmallArchDepthA)
 			curl (xBar - [HSwToV Stroke]) 0 [heading Downward]
 		if doBottomSerif : include : rBottomSerif 0
@@ -274,7 +274,7 @@ glyph-block Letter-Latin-Lower-R : begin
 			include : setTurnedMarks doTS XH 0
 			include : PalatalHook.r
 				xLink -- (df.rightSB - xBar + df.leftSB)
-				x -- (df.rightSB + SideJut)
+				x -- (df.rightSB - xBar + df.leftSB + [HSwToV Stroke] + SideJut)
 				y -- 0
 
 		create-glyph "turnrLongLeg.\(suffix)" : glyph-proc
@@ -331,7 +331,7 @@ glyph-block Letter-Latin-Lower-R : begin
 			archv
 			straight.down.end (xBar - [HSwToV fine]) (XH * 0.53 + (SmallArchDepth - SmallArchDepthA)) [widths.heading fine 0 Downward]
 		include : BBBarRight xBar 0 XH
-		set-base-anchor 'overlay' (xBar - HVContrast * (BBD + BBS * 2) * 0.25) (XH * 0.5)
+		set-base-anchor 'overlay' (xBar - [HSwToV : BBD + BBS * 2] * 0.25) (XH * 0.5)
 
 	create-glyph 'mathbb/r' 0x1D563 : glyph-proc
 		include : dfR.markSet.e
