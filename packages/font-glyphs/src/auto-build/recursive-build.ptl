@@ -16,7 +16,7 @@ glyph-block Recursive-Build : begin
 
 	define [MiniatureParaT] : with-params [pp crowd scale [sbscale (Width / UPM)] [mono false] [mono2 false] [forceUpright false]] : begin
 		local forkedPara : Object.assign {.} pp
-		forkedPara.stroke = [AdviceStroke crowd : Math.pow [clamp 0 1 (HalfUPM / Width)] 0.5] / scale
+		forkedPara.stroke = [AdviceStroke crowd : Math.sqrt : clamp 0 1 (HalfUPM / Width)] / scale
 		forkedPara.dotSize = pp.dotSize * forkedPara.stroke / pp.stroke
 		forkedPara.periodSize = pp.periodSize * forkedPara.stroke / pp.stroke
 		forkedPara.sb = SB * sbscale
@@ -24,6 +24,7 @@ glyph-block Recursive-Build : begin
 			forkedPara.slopeAngle  = 0
 		if mono : begin
 			forkedPara.diversityM  = 1
+			forkedPara.diversityT  = 1
 		if mono2 : begin
 			forkedPara.diversityF  = 1
 			forkedPara.diversityI  = 1
@@ -48,6 +49,7 @@ glyph-block Recursive-Build : begin
 		forkedPara.jut = Jut * p
 		forkedPara.longjut = LongJut * p
 		forkedPara.diversityM = 1
+		forkedPara.diversityT = 1
 		if fMono : begin
 			forkedPara.diversityF  = 1
 			forkedPara.diversityI  = 1
@@ -73,7 +75,7 @@ glyph-block Recursive-Build-ParaTfm : begin
 	define ForkTfm : namespace
 		define [boldGrade g] : begin
 			local pGrade : (900 - g) / 100
-			return : 900 - 100 * (2 / 25) * pGrade * pGrade
+			return : 900 - 100 * (2 / 25) * (pGrade ** 2)
 
 		export : define [Bold   a]     : begin [set a.shape.weight : boldGrade a.shape.weight]
 		export : define [Italic a]     : begin

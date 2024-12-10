@@ -491,25 +491,46 @@ glyph-block Mark-Above : begin
 			flat (SB - Width)      aboveMarkMid [widths.center : 2 * markHalfStroke]
 			curl (RightSB - Width) aboveMarkMid
 
-	create-glyph 'sbRsbOverlineAbove/diversityI' : glyph-proc
+	create-glyph 'cyrl/ghe.SRB/overlineAbove' : glyph-proc
 		local df : DivFrame para.diversityI
 		set-width 0
-		include : StdAnchors.impl 'above' 0 (1.5 * df.div)
+		set-mark-anchor 'above' markMiddle XH markMiddle aboveMarkStack
 
 		local leftEnd  : markMiddle - (df.rightSB - df.leftSB) / 2
 		local rightEnd : markMiddle + (df.rightSB - df.leftSB) / 2
+
+		set-base-anchor 'aboveBraceL' leftEnd aboveMarkMid
+		set-base-anchor 'aboveBraceR' rightEnd aboveMarkMid
 
 		include : dispiro
 			flat leftEnd  aboveMarkMid [widths.center : 2 * markHalfStroke]
 			curl rightEnd aboveMarkMid
 
-	create-glyph 'sbRsbOverlineAbove/diversityM' : glyph-proc
-		local df : DivFrame para.diversityM
+	create-glyph 'cyrl/pe.SRB/overlineAbove' : glyph-proc
+		local df : DivFrame 1
 		set-width 0
-		include : StdAnchors.impl 'above' 0 (1.5 * df.div)
+		set-mark-anchor 'above' markMiddle XH markMiddle aboveMarkStack
 
 		local leftEnd  : markMiddle - (df.rightSB - df.leftSB) / 2
 		local rightEnd : markMiddle + (df.rightSB - df.leftSB) / 2
+
+		set-base-anchor 'aboveBraceL' leftEnd aboveMarkMid
+		set-base-anchor 'aboveBraceR' rightEnd aboveMarkMid
+
+		include : dispiro
+			flat leftEnd  aboveMarkMid [widths.center : 2 * markHalfStroke]
+			curl rightEnd aboveMarkMid
+
+	create-glyph 'cyrl/te.SRB/overlineAbove' : glyph-proc
+		local df : DivFrame para.diversityM 3
+		set-width 0
+		set-mark-anchor 'above' markMiddle XH markMiddle aboveMarkStack
+
+		local leftEnd  : markMiddle - (df.rightSB - df.leftSB) / 2
+		local rightEnd : markMiddle + (df.rightSB - df.leftSB) / 2
+
+		set-base-anchor 'aboveBraceL' leftEnd aboveMarkMid
+		set-base-anchor 'aboveBraceR' rightEnd aboveMarkMid
 
 		include : dispiro
 			flat leftEnd  aboveMarkMid [widths.center : 2 * markHalfStroke]
@@ -890,7 +911,7 @@ glyph-block Mark-Above : begin
 
 		local top aboveMarkTop
 		local bot aboveMarkBot
-		local exp : Math.sqrt : 1 + [Math.pow ((top - bot) / markExtend) 2]
+		local exp : Math.sqrt : 1 + (((top - bot) / markExtend) ** 2)
 		include : dispiro
 			widths.center : markFine * 2
 			flat (markMiddle + markExtend) top
@@ -946,7 +967,7 @@ glyph-block Mark-Above : begin
 
 		local top aboveMarkTop
 		local bot aboveMarkBot
-		local exp : Math.sqrt : 1 + [Math.pow (3 * markExtend / (top - bot)) 2]
+		local exp : Math.sqrt : 1 + ((3 * markExtend / (top - bot)) ** 2)
 		include : dispiro
 			widths.center : markFine * 2
 			flat (markMiddle - markExtend) bot
@@ -1290,6 +1311,8 @@ glyph-block Mark-Above : begin
 	derive-composites 'graveAbove/viCenter' null 'graveAbove' [VNSecondaryMark 0.875 0 1.75 0.5]
 	derive-composites 'hookAbove/viCenter'  null 'hookAbove'  [VNSecondaryMark 0.875 0 1.75 0.5]
 
+	# Combining brackets
+
 	create-glyph 'leftParenAbove' 0x1AC1 : glyph-proc
 		set-width 0
 		set-mark-anchor 'aboveBraceL' markMiddle aboveMarkMid (markMiddle - markExtend) aboveMarkMid
@@ -1382,3 +1405,11 @@ glyph-block Mark-Above : begin
 		include : refer-glyph 'rightBrackAbove'
 		# No need to setup anchors -- ccmp will help us
 
+	create-glyph 'armn/abbreviationMark' 0x55F : glyph-proc
+		set-width 0
+		include : StdAnchors.wide
+
+		local leftEnd  : markMiddle - markExtend * 1.5
+		local rightEnd : markMiddle + markExtend * 1.5
+		include : VBar.l leftEnd aboveMarkBot aboveMarkTop (markFine * 2)
+		include : HBar.b leftEnd rightEnd aboveMarkBot (markFine * 2)

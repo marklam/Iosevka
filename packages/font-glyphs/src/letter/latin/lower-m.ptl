@@ -9,7 +9,7 @@ glyph-block Letter-Latin-Lower-M : begin
 	glyph-block-import CommonShapes
 	glyph-block-import Common-Derivatives
 	glyph-block-import Mark-Adjustment : LeaningAnchor
-	glyph-block-import Letter-Shared-Shapes : CurlyTail nShoulder nShoulderMask
+	glyph-block-import Letter-Shared-Shapes : CurlyTail nShoulder
 	glyph-block-import Letter-Shared-Shapes : RightwardTailedBar DToothlessRise DMBlend MidHook
 	glyph-block-import Letter-Shared-Shapes : CyrDescender PalatalHook EngHook UpwardHookShape
 	glyph-block-import Letter-Shared-Shapes : SerifFrame
@@ -89,8 +89,11 @@ glyph-block Letter-Latin-Lower-M : begin
 		local sf : SerifFrame.fromDf df top rbot
 		return sf.rb.outer
 
+	define [dfM] : DivFrame para.diversityM 3
+
 	glyph-block-export MEnoughSpaceForFullSerifs
-	define [MEnoughSpaceForFullSerifs df _mid] : begin
+	define [MEnoughSpaceForFullSerifs _df _mid] : begin
+		local df : fallback _df : dfM
 		local mid : fallback _mid df.middle
 		local ink : HSwToV df.mvs
 		local gap : [Math.min (mid - df.leftSB) (df.rightSB - mid)] - 1.5 * ink
@@ -127,8 +130,7 @@ glyph-block Letter-Latin-Lower-M : begin
 		local fFull : MEnoughSpaceForFullSerifs df : fallback _mid df.middle
 		include : SmallMBottomMotionRightSerif df top rbot fFull
 
-	glyph-block-export dfM
-	define [dfM] : DivFrame para.diversityM 3
+	glyph-block-export SmallMArches
 	define [SmallMArches df top lbot mbot rbot _mid] : glyph-proc
 		local mid : fallback _mid df.middle
 		include : SmallMShoulderSpiro
@@ -138,7 +140,7 @@ glyph-block Letter-Latin-Lower-M : begin
 			top       -- top
 			bottom    -- mbot
 			width     -- df.mvs
-			fine      -- (df.mvs * ShoulderFine / Stroke)
+			fine      -- df.shoulderFine
 		include : SmallMShoulderSpiro
 			df        -- df
 			left      -- (mid + [HSwToV : 0.5 * df.mvs])
@@ -146,7 +148,7 @@ glyph-block Letter-Latin-Lower-M : begin
 			top       -- top
 			bottom    -- rbot
 			width     -- df.mvs
-			fine      -- (df.mvs * ShoulderFine / Stroke)
+			fine      -- df.shoulderFine
 		include : tagged 'barL' : VBar.l df.leftSB lbot top df.mvs
 
 	define [SmallMShortLegHeight top df] : (top - df.mvs) * 0.45
@@ -417,28 +419,28 @@ glyph-block Letter-Latin-Lower-M : begin
 				eject-contour 'serifLT'
 				include : CyrDescender.rSideJut df.rightSB 0 (refSw -- df.mvs)
 
-	select-variant 'turnm' 0x26F (follow -- [conditional-follow [MEnoughSpaceForFullSerifs : dfM] 'turnm/full' 'turnm/reduced'])
+	select-variant 'turnm' 0x26F (follow -- [conditional-follow [MEnoughSpaceForFullSerifs] 'turnm/full' 'turnm/reduced'])
 	select-variant 'turnm/reduced' (shapeFrom -- 'turnm')
 
-	select-variant 'capitalTurnm' 0x19C (follow -- [conditional-follow [MEnoughSpaceForFullSerifs : dfM] 'turnm/full' 'turnm/reduced'])
+	select-variant 'capitalTurnm' 0x19C (follow -- [conditional-follow [MEnoughSpaceForFullSerifs] 'turnm/full' 'turnm/reduced'])
 
-	select-variant 'turnmLeg' 0x270 (follow -- [conditional-follow [MEnoughSpaceForFullSerifs : dfM] 'turnmLeg/full' 'turnmLeg/reduced'])
+	select-variant 'turnmLeg' 0x270 (follow -- [conditional-follow [MEnoughSpaceForFullSerifs] 'turnmLeg/full' 'turnmLeg/reduced'])
 	select-variant 'turnmLeg/reduced' (shapeFrom -- 'turnmLeg')
 
-	select-variant 'turnmSideways' 0x1D1F (follow -- [conditional-follow [MEnoughSpaceForFullSerifs : dfM] 'turnm/full' 'turnm/reduced'])
+	select-variant 'turnmSideways' 0x1D1F (follow -- [conditional-follow [MEnoughSpaceForFullSerifs] 'turnm/full' 'turnm/reduced'])
 
-	select-variant 'cyrl/sha.italic' (shapeFrom -- 'turnm') (follow -- [conditional-follow [MEnoughSpaceForFullSerifs : dfM] 'cyrl/sha.italic/full' 'cyrl/sha.italic/reduced'])
+	select-variant 'cyrl/sha.italic' (shapeFrom -- 'turnm') (follow -- [conditional-follow [MEnoughSpaceForFullSerifs] 'cyrl/sha.italic/full' 'cyrl/sha.italic/reduced'])
 	alias 'cyrl/sha.BGR' null 'cyrl/sha.italic'
 	select-variant 'cyrl/sha/reduced.italic' (shapeFrom -- 'turnm') (follow -- 'cyrl/sha.italic/reduced')
 	alias 'cyrl/sha/reduced.BGR' null 'cyrl/sha/reduced.italic'
 
-	select-variant 'cyrl/shcha.italic' (follow -- [conditional-follow [MEnoughSpaceForFullSerifs : dfM] 'cyrl/shcha.italic/full' 'cyrl/shcha.italic/reduced'])
+	select-variant 'cyrl/shcha.italic' (follow -- [conditional-follow [MEnoughSpaceForFullSerifs] 'cyrl/shcha.italic/full' 'cyrl/shcha.italic/reduced'])
 	alias 'cyrl/shcha.BGR' null 'cyrl/shcha.italic'
 	select-variant 'cyrl/shcha/reduced.italic' (shapeFrom -- 'cyrl/shcha.italic') (follow -- 'cyrl/shcha.italic/reduced')
 	alias 'cyrl/shcha/reduced.BGR' null 'cyrl/shcha/reduced.italic'
 
-	derive-composites 'cyrl/te.SRB' null 'cyrl/sha.italic' 'sbRsbOverlineAbove/diversityM'
-	derive-composites 'cyrl/te/reduced.SRB' null 'cyrl/sha/reduced.italic' 'sbRsbOverlineAbove/diversityM'
+	derive-composites 'cyrl/te.SRB' null 'cyrl/sha.italic' 'cyrl/te.SRB/overlineAbove'
+	derive-composites 'cyrl/te/reduced.SRB' null 'cyrl/sha/reduced.italic' 'cyrl/te.SRB/overlineAbove'
 
 	glyph-block-import Letter-Blackboard : BBS BBD BBBarLeft
 	create-glyph 'mathbb/m' 0x1D55E : glyph-proc
@@ -452,14 +454,14 @@ glyph-block Letter-Latin-Lower-M : begin
 		include : BBBarLeft df.leftSB 0 XH (bbd -- bbd) (bbs -- bbs)
 		include : union
 			HBar.b (xMid - bbd) xMid 0 bbs
-			nShoulder
+			nShoulder.shape
 				stroke -- bbs
 				left -- (df.leftSB + bbd + [HSwToV bbs])
 				right -- xMid
 				fine -- ShoulderFine
 			intersection
 				VBar.r (xMid - bbd) 0 XH bbs
-				nShoulderMask
+				nShoulder.mask
 					stroke -- bbs
 					left -- (df.leftSB + bbd + [HSwToV bbs] + 1)
 					right -- (xMid - 1)
@@ -467,7 +469,7 @@ glyph-block Letter-Latin-Lower-M : begin
 					fine -- ShoulderFine
 		include : union
 			HBar.b (df.rightSB - bbd) df.rightSB 0 bbs
-			nShoulder
+			nShoulder.shape
 				leftY0 -- 0
 				stroke -- bbs
 				left -- xMid
@@ -475,7 +477,7 @@ glyph-block Letter-Latin-Lower-M : begin
 				fine -- ShoulderFine
 			intersection
 				VBar.r (df.rightSB - bbd) 0 XH bbs
-				nShoulderMask
+				nShoulder.mask
 					stroke -- bbs
 					left -- (xMid + 1)
 					right -- (df.rightSB - 1)
