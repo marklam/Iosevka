@@ -1,73 +1,140 @@
 ## Modifications since last major version
 
-### 32.2.1
+### 33.2.3
+
+* Refine shape of the following characters:
+  - ARMENIAN SMALL LETTER CHA (`U+0579`).
+  - INFORMATION SOURCE (`U+2139`).
+  - TRIANGLE-HEADED RIGHTWARDS ARROW (`U+279D`).
+  - HEAVY TRIANGLE-HEADED RIGHTWARDS ARROW (`U+279E`).
+  - DASH WITH UPTURN (`U+2E43`).
+  - LATIN SMALL LETTER SCRIPT R WITH RING (`U+AB4C`).
+  - MATHEMATICAL DOUBLE-STRUCK CAPITAL B (`U+1D539`).
+* Add Characters:
+  - LEFTWARDS DOUBLE DASH ARROW (`U+290C`) ... RIGHTWARDS TRIPLE DASH ARROW (`U+290F`).
+
+
+### 33.2.2
+
+* Refine shape of the following characters:
+  - LATIN CAPITAL LETTER G WITH HOOK (`U+0193`).
+  - LATIN LETTER SMALL CAPITAL G WITH HOOK (`U+029B`).
+  - CYRILLIC CAPITAL LETTER KOMI DZJE (`U+0506`).
+  - CYRILLIC SMALL LETTER KOMI DZJE (`U+0507`).
+  - THERE DOES NOT EXIST (`U+2204`).
+  - CYRILLIC CAPITAL LETTER IOTIFIED A (`U+A656`).
+  - CYRILLIC CAPITAL LETTER IOTIFIED CLOSED LITTLE YUS (`U+A65C`).
+  - CYRILLIC SMALL LETTER IOTIFIED CLOSED LITTLE YUS (`U+A65D`).
+  - LATIN CAPITAL LETTER VOLAPUK UE (`U+A79E`).
+  - LATIN SMALL LETTER VOLAPUK UE (`U+A79F`).
+  - MODIFIER LETTER SMALL CAPITAL G WITH HOOK (`U+10794`).
+  - MUSICAL SYMBOL DOUBLE SHARP (`U+1D12A`).
+* Add Characters:
+  - MUSICAL SYMBOL FERMATA (`U+1D110`).
+  - MUSICAL SYMBOL FERMATA BELOW (`U+1D111`).
+
+
+### 33.2.1
+
+* Refine shape of the following characters:
+  - ARMENIAN CAPITAL LETTER TO (`U+0539`).
+  - ARMENIAN SMALL LETTER TO (`U+0569`).
+  - MATHEMATICAL DOUBLE-STRUCK DIGIT TWO (`U+1D7DA`) (#2728).
+
+
+### 33.2.0
+
+* Add `flat-top` variants for `curly`, `straight-vertical-sides`, and `rounded-vertical-sides` forms of `W` and `w` (#2146).
+* Add `almost-flat-top` variants for `curly` forms of `W` and `w`.
+* Refine shape of the following characters:
+  - GREEK CAPITAL LETTER HETA (`U+0370`).
+  - GREEK SMALL LETTER HETA (`U+0371`).
+  - LATIN CAPITAL LETTER HALF H (`U+2C75`).
+  - LATIN SMALL LETTER HALF H (`U+2C76`).
+  - LATIN CAPITAL LETTER AU (`U+A736`).
+  - LATIN CAPITAL LETTER REVERSED HALF H (`U+A7F5`).
+  - LATIN SMALL LETTER REVERSED HALF H (`U+A7F6`).
+  - LATIN SMALL LIGATURE FFI (`U+FB03`).
+* Make certain characters slightly wider under Quasi-Proportional. Affected characters:
+  - ARMENIAN CAPITAL LETTER TO (`U+0539`).
+  - ARMENIAN SMALL LETTER TO (`U+0569`).
+  - ARMENIAN SMALL LIGATURE ECH YIWN (`U+0587`).
+* Fix variant application of `cv38` on `U+1DF0F`.
+
+
+### 33.1.0
+
+* Add `full-serifed` variants for `K` and `k`, and related letters (#2696).
+* Add `top-right-serifed` and `tri-serifed` variants for `K` and `k`, and related letters.
+* Add `cursive` variant for Greek Lower Theta (`θ`).
+* Add `closed-swash` variant for `Q` (#2392).
+* Add IPA localization form for Latin Lower `a` and `g`.
+* Add IPA localization form for Latin Lower G with Stroke (`ǥ`) (#2632).
+* Add variant selectors for Greek Lower Eta (`η`) and Kappa (`κ`).
+* Add Characters:
+  - LATIN SMALL LETTER TURNED T WITH CURL (`U+1DF0D`) (#1931).
+  - LATIN LETTER INVERTED GLOTTAL STOP WITH CURL (`U+1DF0E`) (#1931).
+  - LATIN LETTER STRETCHED C WITH CURL (`U+1DF0F`) (#1931).
+
+
+### 33.0.1
 
 * Make certain characters slightly wider under Quasi-Proportional. Affected characters:
-  - CYRILLIC CAPITAL LETTER DJE (`U+0402`).
-  - CYRILLIC CAPITAL LETTER TSHE (`U+040B`).
-  - CYRILLIC CAPITAL LETTER IOTIFIED LITTLE YUS (`U+0468`).
-  - CYRILLIC CAPITAL LETTER IOTIFIED BIG YUS (`U+046C`).
-  - CYRILLIC CAPITAL LETTER BASHKIR KA (`U+04A0`).
-  - CYRILLIC SMALL LETTER BASHKIR KA (`U+04A1`).
-  - CYRILLIC CAPITAL LIGATURE TE TSE (`U+04B4`).
-  - CYRILLIC SMALL LIGATURE TE TSE (`U+04B5`).
-  - CYRILLIC CAPITAL LETTER YERU WITH BACK YER (`U+A650`).
-  - CYRILLIC SMALL LETTER YERU WITH BACK YER (`U+A651`).
-  - CYRILLIC CAPITAL LETTER TCHE (`U+A692`).
-  - CYRILLIC SMALL LETTER TCHE (`U+A693`).
-  - LATIN EPIGRAPHIC LETTER ARCHAIC M (`U+A7FF`).
-  - MODIFIER LETTER CYRILLIC SMALL YERU WITH BACK YER (`U+1E06C`).
+  - LATIN SMALL LETTER TH WITH STRIKETHROUGH (`U+1D7A`).
+* Allow Latin Alpha (`ɑ`) and Script G (`ɡ`) to use eared/earless variants of `a` (`cv36`) and `g` (`cv42`) respectively.
 
 
-### 32.2.0
+### 33.0.0
 
-* Make M-width small-capital characters slightly narrower under Quasi-Proportional. Affected characters:
-  - LATIN LETTER SMALL CAPITAL OE (`U+0276`).
-  - GREEK SMALL LETTER SAN (`U+03FB`).
-  - CYRILLIC SMALL LETTER EM (`U+043C`).
-  - CYRILLIC SMALL LETTER EM WITH TAIL (`U+04CE`).
-  - LATIN LETTER SMALL CAPITAL AE (`U+1D01`).
-  - LATIN LETTER SMALL CAPITAL M (`U+1D0D`).
-  - LATIN LETTER SMALL CAPITAL W (`U+1D21`).
-  - GREEK LETTER SMALL CAPITAL PSI (`U+1D2A`).
-  - TELEPHONE SIGN (`U+2121`).
-  - FACSIMILE SIGN (`U+213B`).
-  - CYRILLIC SMALL LETTER SOFT EM (`U+A667`).
-  - LATIN LETTER SMALL CAPITAL TURNED M (`U+A7FA`).
-  - MODIFIER LETTER SMALL CAPITAL AA (`U+10780`).
-  - MODIFIER LETTER SMALL CAPITAL OE (`U+107A3`).
-  - MODIFIER LETTER CYRILLIC SMALL EM (`U+1E03B`).
-* Make LATIN SMALL LIGATURE FF (`U+FB00`) ... LATIN SMALL LIGATURE FFL (`U+FB04`) slightly narrower under Quasi-Proportional.
-* Optimize glyphs for Bulgarian Cyrillic Capital/Small Letter Ef (`U+0424`, `U+0444`).
-
-
-### 32.1.0
-
-* Make dense letters less outstanding (#2581).
-* Optimize glyphs for Armenian Capital Ini (`U+053B`), Ken (`U+053F`), and Vew (`U+054E`).
-* Remove bottom-right serif from Armenian Capital Now (`U+0546`).
-* Remove top-right serif from Armenian Lower Ben (`U+0562`).
-* Make serif of Armenian Lower Yi (`U+0575`) consistent with Armenian Lower Liwn (`U+056C`).
-* Make hook of Armenian Lower Co (`U+0581`) consistent with Armenian Lower Yi (`U+0575`).
-
-
-### 32.0.1
-
-* Fix inconsistent serifs of `U+0284` and `U+10798` with the variants of `j` (#2569).
-
-
-### 32.0.0
-
-* Add Armenian letters:
-  - ARMENIAN CAPITAL LETTER AYB (`U+0531`) ... ARMENIAN DRAM SIGN (`U+058F`).
-* Add characters:
-  - LEFT AND RIGHT DOUBLE TURNSTILE (`U+27DA`).
-  - LEFT AND RIGHT TACK (`U+27DB`).
-  - LONG RIGHT TACK (`U+27DD`).
-  - LONG LEFT TACK (`U+27DE`).
-  - UP ARROW THROUGH CIRCLE (`U+29BD`).
-  - UPPER LEFT QUADRANT STANDING KNIGHT (`U+1CCD2`) ... LOWER RIGHT QUADRANT STANDING KNIGHT (`U+1CCD5`).
-  - HORIZONTAL ZIGZAG LINE (`U+1CEB0`).
-* Optimize `semi-chancery-straight-serifed` and `semi-chancery-curly-serifed` variants for `x` (`cv58`).
-* Make Dotless J with Stroke and Hook (`U+0284`) have a serif under slab.
+* \[**Breaking**\] Adjusted width of spaces in quasi-porportional
+  - Slightly narrower by default
+  - Adjustable via metric override
+* \[**Breaking**\] Reordered variants for `W`, `a`, `b`, `g`, `q`, `w`, `α`, Cyrillic `а`, Cyrillic `ф`, and `$`.
+* \[**Breaking**\] Add variants for Capital Thorn (`Þ`) with symmetric/asymmetric bowl position.
+* \[**Breaking**\] Add variant selector for Greek Lower Theta (#2630).
+  - As a result, character variant feature tags are reordered.
+* Add almost-flat-top variant for `W` and `w` (#2693).
+* Add `closed-contour` variant for Partial derivative symbol (#2148).
+* Refine shape of the following characters:
+  - GREEK CAPITAL LETTER HETA (`U+0370`).
+  - GREEK SMALL LETTER HETA (`U+0371`).
+  - GREEK CAPITAL LETTER SHO (`U+03F7`).
+  - CYRILLIC CAPITAL LETTER SHHA (`U+04BA`).
+  - CYRILLIC CAPITAL LETTER KOMI DJE (`U+0502`) ... CYRILLIC SMALL LETTER KOMI ZJE (`U+0505`).
+  - CYRILLIC CAPITAL LETTER KOMI LJE (`U+0508`) ... CYRILLIC SMALL LETTER KOMI TJE (`U+050F`).
+  - CYRILLIC CAPITAL LETTER SHHA WITH DESCENDER (`U+0526`).
+  - ARMENIAN CAPITAL LETTER EH (`U+0537`).
+  - ARMENIAN CAPITAL LETTER INI (`U+053B`).
+  - ARMENIAN CAPITAL LETTER XEH (`U+053D`).
+  - ARMENIAN CAPITAL LETTER CA (`U+053E`).
+  - ARMENIAN CAPITAL LETTER HO (`U+0540`).
+  - ARMENIAN CAPITAL LETTER CO (`U+0551`).
+  - ARMENIAN CAPITAL LETTER FEH (`U+0556`).
+  - ARMENIAN SMALL LETTER BEN (`U+0562`).
+  - ARMENIAN SMALL LETTER ECH (`U+0565`).
+  - ARMENIAN SMALL LETTER EH (`U+0567`).
+  - ARMENIAN SMALL LETTER ZHE (`U+056A`).
+  - ARMENIAN SMALL LETTER XEH (`U+056D`).
+  - ARMENIAN SMALL LETTER CHA (`U+0579`).
+  - ARMENIAN SMALL LETTER TIWN (`U+057F`).
+  - ARMENIAN SMALL LETTER PIWR (`U+0583`).
+  - ARMENIAN SMALL LETTER FEH (`U+0586`).
+  - ARMENIAN SMALL LIGATURE ECH YIWN (`U+0587`).
+  - LATIN CAPITAL LETTER HALF H (`U+2C75`).
+  - LATIN SMALL LETTER HALF H (`U+2C76`).
+  - CYRILLIC CAPITAL LETTER HWE (`U+A694`).
+  - LATIN CAPITAL LETTER REVERSED HALF H (`U+A7F5`).
+  - LATIN SMALL LETTER REVERSED HALF H (`U+A7F6`).
+* Make certain characters slightly wider under Quasi-Proportional. Affected characters:
+  - CYRILLIC CAPITAL LETTER UK (`U+0478`).
+  - LATIN SMALL LIGATURE FF (`U+FB00`) ... LATIN SMALL LIGATURE FFL (`U+FB04`).
+* Add Characters:
+  - OBSERVER EYE SYMBOL (`U+23FF`).
+  - LATIN SMALL LETTER SCRIPT R (`U+AB4B`).
+  - LATIN SMALL LETTER SCRIPT R WITH RING (`U+AB4C`).
+  - KEYHOLE (`U+1CEB1`). 
+  - BLACK RIGHT TRIANGLE CARET (`U+1CEB3`). 
+  - RIGHTWARDS ARROW WITH LOWER HOOK (`U+1F8B2`). 
+  - LEFTWARDS ARROW FROM DOWNWARDS ARROW (`U+1F8C0`). 
+  - RIGHTWARDS ARROW FROM DOWNWARDS ARROW (`U+1F8C1`).
 
