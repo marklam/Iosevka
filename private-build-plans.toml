@@ -6,17 +6,39 @@ noCvSs = true
 exportGlyphNames = false
 buildTextureFeature = true
 
-  [buildPlans.iosevka-custom.variants]
-  inherits = "ss04"
+[buildPlans.iosevka-custom.variants]
+inherits = "ss04"
 
-    [buildPlans.iosevka-custom.variants.design]
-    at = "fourfold"
-    dollar = "open"
-    cent = "open"
-    l = "zshaped"
+[buildPlans.iosevka-custom.variants.design]
+at = "fourfold"
+dollar = "open"
+cent = "open"
+l = "zshaped"
 
-  [buildPlans.iosevka-custom.ligations]
-  inherits = "fsharp"
-  disables = ["ltgt-ne"]
-  enables = ["llgg", "brack-bar", "brace-bar"]
+[buildPlans.iosevka-custom.ligations]
+inherits = "fsharp"
+disables = ["ltgt-ne"]
+enables = ["llgg", "brack-bar", "brace-bar"]
+
+[buildPlans.iosevka-quasi]
+family = "Iosevka Quasi"
+spacing = "quasi-proportional"
+serifs = "sans"
+noCvSs = true
+exportGlyphNames = false
+buildTextureFeature = true
+
+[buildPlans.iosevka-quasi.variants]
+inherits = "ss04"
+
+[buildPlans.iosevka-quasi.variants.design]
+at = "fourfold"
+dollar = "open"
+cent = "open"
+l = "zshaped"
+
+[buildPlans.iosevka-quasi.ligations]
+inherits = "fsharp"
+disables = ["ltgt-ne"]
+enables = ["llgg", "brack-bar", "brace-bar"]
 
